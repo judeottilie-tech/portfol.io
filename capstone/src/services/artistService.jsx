@@ -1,28 +1,30 @@
+import { API_URL } from "./apiConfig"
+
 export const getArtists = () => {
-  return fetch("http://localhost:8088/artists").then((res) => res.json())
+  return fetch(`${API_URL}/artists`).then((res) => res.json())
 }
 
 export const getArtistById = (id) => {
   return fetch(
-    `http://localhost:8088/artists/${id}`,
+    `${API_URL}/artists/${id}`,
   ).then((res) => res.json())
 }
 
 
 export const getArtistByUsername = (username) => {
-  return fetch(`http://localhost:8088/artists?username=${username}`).then(
+  return fetch(`${API_URL}/artists?username=${username}`).then(
     (res) => res.json(),
   )
 }
 
 export const getArtistByEmail = (email) => {
-  return fetch(`http://localhost:8088/artists?email=${email}`).then((res) =>
+  return fetch(`${API_URL}/artists?email=${email}`).then((res) =>
     res.json(),
   )
 }
 
 export const createArtist = (artist) => {
-  return fetch(`http://localhost:8088/artists`, {
+  return fetch(`${API_URL}/artists`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -32,7 +34,7 @@ export const createArtist = (artist) => {
 }
 
 export const updateArtist = (artist) => {
-  return fetch(`http://localhost:8088/artists/${artist.id}`, {
+  return fetch(`${API_URL}/artists/${artist.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

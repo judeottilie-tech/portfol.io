@@ -1,10 +1,12 @@
+import { API_URL } from "./apiConfig"
+
 export const getTags = () => {
-  return fetch(`http://localhost:8088/tags`).then((res) => res.json())
+  return fetch(`${API_URL}/tags`).then((res) => res.json())
 }
 
 /*
 export const createTag = (tag) => {
-  return fetch(`http://localhost:8088/tags`, {
+  return fetch(`${API_URL}/tags`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -15,7 +17,7 @@ export const createTag = (tag) => {
 */
 
 export const getTagByName = (name) => {
-  return fetch(`http://localhost:8088/tags?name=${name}`).then((res) =>
+  return fetch(`${API_URL}/tags?name=${name}`).then((res) =>
     res.json(),
   )
 }

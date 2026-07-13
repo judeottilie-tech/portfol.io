@@ -1,23 +1,25 @@
+import { API_URL } from "./apiConfig"
+
 export const getAllCommissions = () => {
   return fetch(
-    `http://localhost:8088/commissions?_embed=commissionTags&_expand=artist&_embed=proposals`,
+    `${API_URL}/commissions?_embed=commissionTags&_expand=artist&_embed=proposals`,
   ).then((res) => res.json())
 }
 
 export const getCommissionById = (id) => {
-  return fetch(`http://localhost:8088/commissions/${id}?_expand=artist`).then(
+  return fetch(`${API_URL}/commissions/${id}?_expand=artist`).then(
     (res) => res.json(),
   )
 }
 
 export const getCommissionsByArtist = (artistId) => {
   return fetch(
-    `http://localhost:8088/commissions?artistId=${artistId}&_embed=commissionTags`,
+    `${API_URL}/commissions?artistId=${artistId}&_embed=commissionTags`,
   ).then((res) => res.json())
 }
 
 export const createCommission = (commission) => {
-  return fetch(`http://localhost:8088/commissions`, {
+  return fetch(`${API_URL}/commissions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -29,7 +31,7 @@ export const createCommission = (commission) => {
 export const updateCommission = (commission) => {
   const { commissionTags, proposals, artist, ...commissionToSave } = commission
 
-  return fetch(`http://localhost:8088/commissions/${commission.id}`, {
+  return fetch(`${API_URL}/commissions/${commission.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(commissionToSave),
@@ -37,7 +39,7 @@ export const updateCommission = (commission) => {
 }
 
 export const deleteCommission = (commissionId) => {
-  return fetch(`http://localhost:8088/commissions/${commissionId}`, {
+  return fetch(`${API_URL}/commissions/${commissionId}`, {
     method: "DELETE",
   })
 }
