@@ -1,16 +1,18 @@
+import { API_URL } from "./apiConfig"
+
 export const getCommissionTags = () => {
-  return fetch(`http://localhost:8088/commissionTags`).then((res) => res.json())
+  return fetch(`${API_URL}/commissionTags`).then((res) => res.json())
 }
 
 export const getCommissionTagsByCommission = (commissionId) => {
   return fetch(
-    `http://localhost:8088/commissionTags?commissionId=${commissionId}`,
+    `${API_URL}/commissionTags?commissionId=${commissionId}`,
   ).then((res) => res.json())
 }
 
 export const createCommissionTag = async (newCommissionTag) => {
   const response = await fetch(
-    `http://localhost:8088/commissionTags?commissionId=${newCommissionTag.commissionId}&tagId=${newCommissionTag.tagId}`,
+    `${API_URL}/commissionTags?commissionId=${newCommissionTag.commissionId}&tagId=${newCommissionTag.tagId}`,
   )
 
   const existingCommissionTags = await response.json()
@@ -19,7 +21,7 @@ export const createCommissionTag = async (newCommissionTag) => {
     return existingCommissionTags[0]
   }
 
-  return fetch("http://localhost:8088/commissionTags", {
+  return fetch(`${API_URL}/commissionTags`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -29,7 +31,7 @@ export const createCommissionTag = async (newCommissionTag) => {
 }
 
 export const deleteCommissionTag = (tagId) => {
-  return fetch(`http://localhost:8088/commissionTags/${tagId}`, {
+  return fetch(`${API_URL}/commissionTags/${tagId}`, {
     method: "DELETE",
   })
 }

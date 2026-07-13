@@ -1,11 +1,13 @@
+import { API_URL } from "./apiConfig"
+
 export const getProposalsByCommission = (commissionId) => {
   return fetch(
-    `http://localhost:8088/proposals?commissionId=${commissionId}`,
+    `${API_URL}/proposals?commissionId=${commissionId}`,
   ).then((res) => res.json())
 }
 
 export const getProposalsByArtist = (artistId) => {
-  return fetch(`http://localhost:8088/proposals?_expand=commission`)
+  return fetch(`${API_URL}/proposals?_expand=commission`)
     .then((res) => res.json())
     .then((proposals) => {
       return proposals.filter(
@@ -15,7 +17,7 @@ export const getProposalsByArtist = (artistId) => {
 }
 
 export const createProposal = (proposal) => {
-  return fetch(`http://localhost:8088/proposals`, {
+  return fetch(`${API_URL}/proposals`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(proposal),
@@ -23,7 +25,7 @@ export const createProposal = (proposal) => {
 }
 
 export const updateProposal = (proposal) => {
-  return fetch(`http://localhost:8088/proposals/${proposal.id}`, {
+  return fetch(`${API_URL}/proposals/${proposal.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(proposal),
@@ -31,7 +33,7 @@ export const updateProposal = (proposal) => {
 }
 
 export const deleteProposal = (proposalId) => {
-  return fetch(`http://localhost:8088/proposals/${proposalId}`, {
+  return fetch(`${API_URL}/proposals/${proposalId}`, {
     method: "DELETE",
   })
 }
