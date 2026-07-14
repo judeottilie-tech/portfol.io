@@ -67,6 +67,13 @@ export const Login = () => {
            click here to register!
         </Link>
         </p>
+        <button
+          type="button"
+          onClick={() => setEmail("demo@demo.com")}
+          className="text-sm text-blue-mid hover:text-pink-main transition-colors underline text-left"
+        >
+          just want to look around? try the demo account
+        </button>
       </div>
     </div>
   )
